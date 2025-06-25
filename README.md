@@ -32,3 +32,4 @@ This repository contains a Flask-based web application for generating reports on
     ```bash
     make run
     ```
+<img width="1725" alt="image" src="https://github.com/user-attachments/assets/f1047202-63de-493a-b336-799794c9c295" />
