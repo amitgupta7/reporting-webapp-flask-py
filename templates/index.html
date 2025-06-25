@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <form method="POST">
+        <label for="appliance_id">Appliance ID:</label>
+        <input type="text" id="appliance_id" name="appliance_id" value="{{ appliance_id }}" required>
+        <label for="start_date">From:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ start_date }}" required>
+        <label for="end_date">To:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ end_date }}" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Error message display -->
+    <div id="error_message" style="color: red; margin-top: 20px;"></div>
+    <!-- Display the message if it exists -->
+    {% if message %}
+    <div style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
+        <strong>{{ message }}</strong>
+    </div>
+    {% endif %}
+    {% if graphJSON %}
+    <div id="chart"></div>
+    <script>
+        var graph = {{ graphJSON | safe }};
+        Plotly.newPlot('chart', graph.data, graph.layout);
+    </script>
+    {% endif %}
+</body>
+</html>

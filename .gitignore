@@ -1,0 +1,6 @@
+.applianceDataDir/*
+.dataDir/*
+venv/*
+dist/*
+build/*
+*.egg-info
