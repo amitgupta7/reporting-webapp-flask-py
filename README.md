@@ -17,8 +17,8 @@ This repository contains a Flask-based web application for generating reports on
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd reporting-webapp
+   git clone [<repository-url>](https://github.com/amitgupta7/reporting-webapp-flask-py)
+   cd reporting-webapp-flask-py
    ```
 2. Install python dependencies and download the data from s3.
     ```bash
