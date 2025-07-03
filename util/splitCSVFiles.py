@@ -1,6 +1,6 @@
 #create a cli main method that takes two folder names
 import sys
-import cxcsvtopandas.dataframeloader as dfl
+import dataframeloader as dfl
 import os
 
 def splitDataFromcsv(src_root, dest_root, date):
