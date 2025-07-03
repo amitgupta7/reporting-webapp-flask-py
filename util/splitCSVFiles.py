@@ -48,4 +48,5 @@ if __name__ == "__main__":
     extractApplianceTenantdb(src_root)
 
     for dt in diff:
+        print(f'Processing {dt}')
         splitDataFromcsv(src_root, dest_root, dt)

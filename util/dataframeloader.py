@@ -15,7 +15,7 @@ pd.set_option('future.no_silent_downcasting', True)
 
 def loadPrometheusData(root, fileRegex, metricsName, fileAggFunc, fileExtn, aggfunction, **kwargs):
     daterange = kwargs.get('daterange', None)
-    print("processing "+fileRegex+metricsName+'-'+fileAggFunc+'*'+fileExtn)
+    # print("processing "+fileRegex+metricsName+'-'+fileAggFunc+'*'+fileExtn)
     df1 = loadDataFrameFromFileRegex(root, fileRegex+metricsName+'-'+fileAggFunc+'*'+fileExtn, metrics=metricsName+'_'+fileAggFunc, daterange=daterange)
     df1['metrics'] = metricsName+'_'+fileAggFunc
     # if(metricsName == 'task_queue_length'):
@@ -152,7 +152,7 @@ def fill_timeseries_zero_values(dfp):
 
 def loadStrucDataFromFileRegex(root, regex, **kwargs):
     daterange = kwargs.get('daterange', None)
-    print("loading Strctured Data from file: "+regex)
+    # print("loading Strctured Data from file: "+regex)
     df9 = loadDataFrameFromFileRegex(root, regex, metrics='strcutured_Scan', daterange=daterange)
     df9.rename(columns={'pod':'appliance_id'}, inplace=True)
     cols = ['ds', 'dsid']
@@ -171,7 +171,7 @@ def loadStrucDataFromFileRegex(root, regex, **kwargs):
 
 def loadConnectorDataFromFileRegex(root, regex, **kwargs):
     daterange = kwargs.get('daterange', None)
-    print("loading Unstrctured Data from file: "+regex)
+    # print("loading Unstrctured Data from file: "+regex)
     df7 = loadDataFrameFromFileRegex(root, 'STRUCTURED-*.csv', metrics='strcu', daterange=daterange)
     df6 = loadDataFrameFromFileRegex(root, 'UNSTRUCTURED-*.csv', metrics='unstrcu', daterange=daterange)
     df6 = df6[['pod', 'dsid', 'ds']].drop_duplicates()
@@ -190,7 +190,7 @@ def loadConnectorDataFromFileRegex(root, regex, **kwargs):
 
 def loadUnstrucDataFromFileRegex(root, regex, **kwargs):
     daterange = kwargs.get('daterange', None)
-    print("loading Unstrctured Data from file: "+regex)
+    # print("loading Unstrctured Data from file: "+regex)
     df9 = loadDataFrameFromFileRegex(root, regex, metrics='unStrcutured_Scan', daterange=daterange)
     df9.rename(columns={'pod':'appliance_id'}, inplace=True)
     cols = ['ds', 'dsid']
