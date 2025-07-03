@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-import cxcsvtopandas.dataframeloader as dfl
+import dataframeloader as dfl
 from datetime import datetime, timedelta
 import sys
 

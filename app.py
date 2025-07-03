@@ -59,7 +59,7 @@ def index():
             fig  = dfl.plotMetricsFacetForApplianceId(pod_df, appliance_id)
             graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
         except Exception as e:
-            return render_template("index.html", message=f"{message}\nError processing data: {e}")
+            return render_template("index.html", message=f"{message}\nError processing data: {e}", categories=categories, tenant_db=tenant_db, appliance_id=appliance_id, start_date=startDate, end_date=endDate)
 
     return render_template("index.html", graphJSON=graphJSON, appliance_id=appliance_id, start_date=startDate, end_date=endDate, categories=categories, tenant_db=tenant_db )
 
