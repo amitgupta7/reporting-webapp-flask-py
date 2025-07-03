@@ -9,14 +9,40 @@
 </head>
 <body>
     <form method="POST">
-        <label for="appliance_id">Appliance ID:</label>
-        <input type="text" id="appliance_id" name="appliance_id" value="{{ appliance_id }}" required>
+        <select id="category_select", name="tenant_db" required>
+            <option value="{{ tenant_db }}">{{ tenant_db }}</option>
+            {% for category in categories %}
+            <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+        <select id="appliance_id", name="appliance_id" required>
+            <option value="{{ appliance_id  }}">{{ appliance_id  }}</option>
+        </select>
         <label for="start_date">From:</label>
         <input type="date" id="start_date" name="start_date" value="{{ start_date }}" required>
         <label for="end_date">To:</label>
         <input type="date" id="end_date" name="end_date" value="{{ end_date }}" required>
         <button type="submit">Submit</button>
     </form>
+    <script>
+        document.getElementById('category_select').addEventListener('change', function() {
+            var selectedCategory = this.value;
+            var itemSelect = document.getElementById('appliance_id');
+            itemSelect.innerHTML = '<option value="">Select Appliance ID</option>'; // Clear previous options
+            if (selectedCategory) {
+                fetch('/pods/' + selectedCategory)
+                    .then(response => response.json())
+                    .then(items => {
+                        items.forEach(function(item) {
+                            var option = document.createElement('option');
+                            option.value = item;
+                            option.textContent = item;
+                            itemSelect.appendChild(option);
+                        });
+                    });
+            }
+        });
+    </script>
 
     <!-- Error message display -->
     <div id="error_message" style="color: red; margin-top: 20px;"></div>

@@ -26,7 +26,14 @@ label {
 }
 
 input {
-    width: 20%; /* Set input width to 30% of the screen */
+    width: 10%; 
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+select {
+    width: 20%; 
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;

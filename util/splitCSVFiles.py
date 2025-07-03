@@ -29,6 +29,11 @@ def extractDates(src_root):
 
 
 
+def extractApplianceTenantdb(src_root):
+    df = dfl.loadDataFrameFromFileRegex(src_root, 'SCANPROC*')
+    uniq = df.drop_duplicates(subset=['tenant', 'pod'])[['pod', 'tenant']]
+    uniq.to_csv(f'{dest_root}/pods.csv', index=False)
+
 if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Usage: python splitCSVFiles.py <src_root> <dest_root>")
@@ -39,9 +44,8 @@ if __name__ == "__main__":
 
     source = extractDates(src_root)
     dest = extractDates(dest_root)
-    print(source)
-    print(dest)
     diff = source.difference(dest)
+    extractApplianceTenantdb(src_root)
 
     for dt in diff:
         splitDataFromcsv(src_root, dest_root, dt)
