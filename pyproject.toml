@@ -1,3 +1,6 @@
+[tool.setuptools]
+py-modules = []
+
 [project]
 name = "jupyter-python-local-venv"
 version = "0.0.1"
