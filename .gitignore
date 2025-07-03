@@ -5,3 +5,7 @@ dist/*
 build/*
 *.egg-info
 *.pyc
+.terraform/*
+.terraform.lock.hcl
+*.tf*
+tfalias

@@ -19,7 +19,8 @@ venv:
 	test -d venv || python3 -m venv venv
 
 run: venv
-	eval ${VENV} && python app.py
+	# eval ${VENV} && python app.py
+	eval ${VENV} && gunicorn -w 2 --bind localhost:5000 app:app
 
 preflight:
 	echo "checking ..."
