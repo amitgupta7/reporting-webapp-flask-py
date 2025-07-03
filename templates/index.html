@@ -25,9 +25,7 @@
         <button type="submit">Submit</button>
     </form>
     <script>
-        document.getElementById('category_select').addEventListener('change', function() {
-            var selectedCategory = this.value;
-            var itemSelect = document.getElementById('appliance_id');
+        function updateSelectedtenant(selectedCategory, itemSelect){
             itemSelect.innerHTML = '<option value="">Select Appliance ID</option>'; // Clear previous options
             if (selectedCategory) {
                 fetch('/pods/' + selectedCategory)
@@ -41,7 +39,19 @@
                         });
                     });
             }
+        }
+        document.getElementById('category_select').addEventListener('change', function() {
+            var selectedCategory = this.value;
+            var itemSelect = document.getElementById('appliance_id');
+            updateSelectedtenant(selectedCategory, itemSelect)
         });
+
+        document.getElementById('appliance_id').addEventListener('click', function() {
+            var selectedCategory = document.getElementById('category_select').value;
+            var itemSelect = document.getElementById('appliance_id');
+            updateSelectedtenant(selectedCategory, itemSelect)
+        });
+
     </script>
 
     <!-- Error message display -->
