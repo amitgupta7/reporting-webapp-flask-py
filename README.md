@@ -30,7 +30,7 @@ This repository contains a Flask-based web application for generating reports on
     make split-csv
     ## This should result in .applianceDataDir/<appliance_id> folder with telemetry data for all appliances for last 30 days.
     ```
-. Generate report using cli (non interactive).
+3. Generate report using cli (non interactive).
     ```bash
     ## If date range data isn't downloaded, use:
     make sync-ndays split-csv DAYS="2024-09-26 2024-10-03" 
