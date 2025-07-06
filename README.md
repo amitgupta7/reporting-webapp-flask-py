@@ -24,7 +24,8 @@ This repository contains a Flask-based web application for generating reports on
     ```bash
     make init
     make auth
-    ## Download data for last 30 days. Alternatively, provide date range as DAYS="2024-09-26 2024-10-03" 
+    ## Download data for last 30 days.
+    ## Alternatively, provide date range as DAYS="2024-09-26 2024-10-03" 
     make sync-ndays DAYS=30
     make split-csv
     ## This should result in .applianceDataDir/<appliance_id> folder with telemetry data for all appliances for last 30 days.
