@@ -24,11 +24,20 @@ This repository contains a Flask-based web application for generating reports on
     ```bash
     make init
     make auth
+    ## Download data for last 30 days. Alternatively, provide date range as DAYS="2024-09-26 2024-10-03" 
     make sync-ndays DAYS=30
     make split-csv
     ## This should result in .applianceDataDir/<appliance_id> folder with telemetry data for all appliances for last 30 days.
     ```
-3. Start the web application on `http://localhost:5000`
+. Generate report using cli (non interactive).
+    ```bash
+    ## If date range data isn't downloaded, use:
+    make sync-ndays split-csv DAYS="2024-09-26 2024-10-03" 
+    ## Generate applaince report for POD=58e98e10-1b19-4c84-93c0-db2ad5903b80
+    make report POD=58e98e10-1b19-4c84-93c0-db2ad5903b80 DAYS="2024-09-26 2024-10-03"
+    ```
+    
+4. Start the web application on `http://localhost:5000`
     ```bash
     make run
     ```
